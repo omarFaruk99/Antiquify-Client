@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import "./Navbar.css";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useContext, useEffect, useState } from "react";
 
@@ -38,7 +39,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-[#4F709C] text-white">
+    <div className="navbar  bg-gray-800 text-yellow-400 shadow-md">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -59,14 +60,16 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-gray-700  text-yellow-400 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <div className="flex flex-col text-[#FFD3B6] gap-2 ">
+            <div className="flex flex-col gap-2">
               {navbarLink}
             </div>
           </ul>
         </div>
-        <a className="btn btn-ghost text-[#FFD3B6] text-xl font-bold">Antiquify</a>
+        <a className="btn btn-ghost text-yellow-400 text-2xl font-bold">
+          Antiquify
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -133,7 +136,7 @@ const Navbar = () => {
 
             {/* Dropdown Menu */}
             {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 bg-blue-200 text-black rounded shadow-lg z-10">
+              <div className="absolute right-0 mt-2 bg-gray-700  text-yellow-400 rounded shadow-lg z-10">
                 <ul className="menu p-2">
                   <li>
                     <NavLink to={"/myArtifacts"}>My_Artifacts(p)</NavLink>
@@ -144,7 +147,7 @@ const Navbar = () => {
                   <li>
                     <button
                       onClick={userSignOut}
-                      className="mx-auto bg-slate-800 text-white text-sm mt-2 py-1 px-3"
+                      className="mx-auto bg-slate-800 dark:text-yellow-400 text-sm mt-2 py-1 px-3"
                     >
                       Sign Out
                     </button>

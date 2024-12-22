@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <div>
-      <footer className="footer footer-center  bg-[#213555] text-white p-10">
+      <footer className="footer footer-center   bg-gray-800  text-yellow-400 p-10">
         <nav className="grid grid-flow-col gap-4">
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
@@ -47,7 +47,8 @@ const Footer = () => {
         </nav>
         <aside>
           <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by <span className="text-[#FFD3B6] font-semibold">Antiquify </span>
+            Copyright © {new Date().getFullYear()} - All right reserved by{" "}
+            <span className="text-yellow-400 font-semibold">Antiquify </span>
             Ltd
           </p>
         </aside>

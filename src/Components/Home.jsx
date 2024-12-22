@@ -1,7 +1,15 @@
+import ArtifactPreservationInsights from "./ArtifactPreservationInsights";
+import Banner from "./Banner";
+import DiscoverArtifactOrigins from "./DiscoverArtifactOrigins ";
+import FeaturedArtifacts from "./FeaturedArtifacts";
+
 const Home = () => {
   return (
-    <div>
-      <h1>This is home</h1>
+    <div className="w-11/12 mx-auto">
+      <Banner></Banner>
+      <FeaturedArtifacts></FeaturedArtifacts>
+      <DiscoverArtifactOrigins></DiscoverArtifactOrigins>
+      <ArtifactPreservationInsights></ArtifactPreservationInsights>
     </div>
   );
 };
