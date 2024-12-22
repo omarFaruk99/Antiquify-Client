@@ -1,15 +1,14 @@
 import { useContext } from "react";
-// import { AuthContext } from "../Provider/AuthProvider";
+import { AuthContext } from "../Provider/AuthProvider";
 import Navbar from "./Navbar";
 
 const Header = () => {
-
-//   const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   // console.log("user============> ",user);
-  const user = {
-    email: "faruk@gmail.com",
-    displayName: "faruk(dummy)",
-  };
+  //   const user = {
+  //     email: "faruk@gmail.com",
+  //     displayName: "faruk(dummy)",
+  //   };
 
   return (
     <div>

@@ -1,12 +1,10 @@
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
-// import { AuthContext } from "../Provider/AuthProvider";
+import { AuthContext } from "../Provider/AuthProvider";
 import { useContext, useEffect, useState } from "react";
 
 const Navbar = () => {
-  //   const { user, userSignOut } = useContext(AuthContext);
-
-  const user = "omar";
+  const { user, userSignOut } = useContext(AuthContext);
 
   // State to manage the theme
   const [theme, setTheme] = useState(
@@ -63,7 +61,9 @@ const Navbar = () => {
             </div>
           </ul>
         </div>
-        <a className="btn btn-ghost text-[#FFD3B6] text-xl font-bold">Antiquify</a>
+        <a className="btn btn-ghost text-[#FFD3B6] text-xl font-bold">
+          Antiquify
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -128,7 +128,7 @@ const Navbar = () => {
               </span>
             </div>
             <button
-            //   onClick={userSignOut}
+              onClick={userSignOut}
               className="bg-blue-600 py-1 sm:py-2 px-2 sm:px-5 rounded-sm text-sm sm:text-base"
             >
               Sign out
