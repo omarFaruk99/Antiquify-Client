@@ -14,8 +14,8 @@ const AllArtifacts = () => {
 
   return (
     <div className="w-11/12 mx-auto my-5">
-      <h1>All Artifacts {artifacts.length}</h1>
-      <div className="flex flex-wrap gap-6 justify-center">
+      <h1>Artifacts length {artifacts.length}</h1>
+      <div className="flex flex-wrap gap-6 justify-start items-start">
         {artifacts.map((artifact) => (
           <AllArtifactCards
             key={artifact._id}
