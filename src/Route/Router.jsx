@@ -7,6 +7,7 @@ import AllArtifacts from "../Components/AllArtifacts";
 import AddArtifacts from "../Components/AddArtifacts";
 import MyArtifacts from "../Components/MyArtifacts";
 import LikedArtifacts from "../Components/LikedArtifacts";
+import ArtifactDetails from "../Components/ArtifactDetails";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,12 @@ const router = createBrowserRouter([
       {
         path: "/likedArtifacts",
         element: <LikedArtifacts></LikedArtifacts>,
+      },
+      {
+        path: "/artifacts/details/:id",
+        element: <ArtifactDetails></ArtifactDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/artifacts/details/${params.id}`),
       },
       {
         path: "/login",
