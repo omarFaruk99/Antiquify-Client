@@ -2,6 +2,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const AddArtifacts = () => {
   const { user } = useContext(AuthContext); // Fetch logged-in user info
@@ -11,8 +12,8 @@ const AddArtifacts = () => {
     artifactImage: "",
     artifactType: "",
     historicalContext: "",
-    createdAt: "",
-    discoveredAt: "",
+    createdAt: "e.g. 100 BC",
+    discoveredAt: "e.g. 1799",
     discoveredBy: "",
     presentLocation: "",
   });
@@ -32,54 +33,57 @@ const AddArtifacts = () => {
       likes: 0,
     };
 
-    console.log("artifactData======>", artifactData);
-    console.log("user======>", user);
+    // console.log("artifactData======>", artifactData);
+    // console.log("user======>", user);
 
-    // try {
-    //   const response = await fetch("/api/artifacts", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(artifactData),
-    //   });
+    // using axios
+    // axios.post("http://localhost:3000/artifacts", artifactData).then((res) => {
+    //   console.log("clinet res=======>", res);
+    //   console.log("clinet res.data=======>", res.data);
+    // });
 
-    //   if (response.ok) {
-    //     Swal.fire({
-    //       title: "Success!",
-    //       text: "Artifact added successfully!",
-    //       icon: "success",
-    //       confirmButtonText: "OK",
-    //     });
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/artifacts",
+        artifactData
+      );
 
-    //     // Reset form
-    //     setFormData({
-    //       artifactName: "",
-    //       artifactImage: "",
-    //       artifactType: "",
-    //       historicalContext: "",
-    //       createdAt: "",
-    //       discoveredAt: "",
-    //       discoveredBy: "",
-    //       presentLocation: "",
-    //     });
-    //   } else {
-    //     Swal.fire({
-    //       title: "Error!",
-    //       text: "Failed to add the artifact. Please try again.",
-    //       icon: "error",
-    //       confirmButtonText: "OK",
-    //     });
-    //   }
-    // } catch (error) {
-    //   console.error("Error adding artifact:", error);
-    //   Swal.fire({
-    //     title: "Error!",
-    //     text: "An unexpected error occurred.",
-    //     icon: "error",
-    //     confirmButtonText: "OK",
-    //   });
-    // }
+      if (response.status === 200) {
+        Swal.fire({
+          title: "Success!",
+          text: "Artifact added successfully!",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+
+        // Reset form
+        setFormData({
+          artifactName: "",
+          artifactImage: "",
+          artifactType: "",
+          historicalContext: "",
+          createdAt: "",
+          discoveredAt: "",
+          discoveredBy: "",
+          presentLocation: "",
+        });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to add the artifact. Please try again.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    } catch (error) {
+      console.error("Error adding artifact:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "An unexpected error occurred.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    }
   };
 
   return (
