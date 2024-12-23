@@ -8,6 +8,7 @@ import AddArtifacts from "../Components/AddArtifacts";
 import MyArtifacts from "../Components/MyArtifacts";
 import LikedArtifacts from "../Components/LikedArtifacts";
 import ArtifactDetails from "../Components/ArtifactDetails";
+import UpdateArtifact from "../Components/UpdateArtifact";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         element: <ArtifactDetails></ArtifactDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/artifacts/details/${params.id}`),
+      },
+      {
+        path: "/update/:id",
+        element: <UpdateArtifact></UpdateArtifact>,
       },
       {
         path: "/login",

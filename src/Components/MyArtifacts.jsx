@@ -1,10 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const MyArtifacts = () => {
   const { user } = useContext(AuthContext);
   const [artifacts, setArtifacts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -18,23 +21,41 @@ const MyArtifacts = () => {
   }, [user?.email]);
 
   const handleUpdate = (id) => {
-    console.log("Update artifact with ID:", id);
-    // Implement update functionality here
+    navigate(`/update/${id}`);
   };
 
   const handleDelete = (id) => {
     console.log("Delete artifact with ID:", id);
-    // Implement delete functionality here
-    axios
-      .delete(`http://localhost:3000/artifacts/${id}`)
-      .then((res) => {
-        if (res.status === 200) {
-          setArtifacts(artifacts.filter((artifact) => artifact._id !== id));
-        }
-      })
-      .catch((error) => {
-        console.error("Error deleting artifact:", error);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // proceed with deletion
+        axios
+          .delete(`http://localhost:3000/artifacts/${id}`)
+          .then((res) => {
+            if (res.status === 200) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Artifact has been deleted.",
+                icon: "success",
+              });
+              // Update state to remove the deleted artifact
+              setArtifacts(artifacts.filter((artifact) => artifact._id !== id));
+              navigate("/allArtifacts");
+            }
+          })
+          .catch((error) => {
+            console.error("Error deleting artifact:", error);
+          });
+      }
+    });
   };
 
   return (
