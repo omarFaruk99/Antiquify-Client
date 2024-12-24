@@ -3,10 +3,12 @@ import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { HashLoader } from "react-spinners";
 
 const MyArtifacts = () => {
   const { user } = useContext(AuthContext);
   const [artifacts, setArtifacts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,11 +16,20 @@ const MyArtifacts = () => {
       .get(`http://localhost:3000/myArtifacts?email=${user?.email}`)
       .then((res) => {
         setArtifacts(res.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching artifacts:", error);
       });
   }, [user?.email]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <HashLoader size={80} color="#ffae42"  />
+      </div>
+    );
+  }
 
   const handleUpdate = (id) => {
     navigate(`/update/${id}`);

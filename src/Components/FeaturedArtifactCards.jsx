@@ -16,7 +16,7 @@ const FeaturedArtifactCards = ({ artifact }) => {
   } = artifact;
 
   return (
-    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 p-5 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 min-h-[22rem] max-w-sm mx-auto flex flex-col justify-between">
+    <div className="bg-white border dark:bg-gray-800 shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105 p-3">
       {/* Artifact Image */}
       <img
         src={artifactImage}
