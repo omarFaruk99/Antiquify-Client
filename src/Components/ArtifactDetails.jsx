@@ -1,27 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { FaRegHeart, FaMapMarkerAlt, FaUserAlt, FaClock } from "react-icons/fa";
+import axios from "axios";
 
 const ArtifactDetails = () => {
-  const artifactDetails = useLoaderData();
-  const [likes, setLikes] = useState(artifactDetails.likes);
+  const artifactDetails = useLoaderData(); // Load the artifact data
+  const [likes, setLikes] = useState(artifactDetails.likes); // State to track the number of likes
 
   const handleLike = async () => {
     try {
-      const response = await fetch(
-        `http://localhost:3000/artifacts/${artifactDetails._id}/like`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-        }
+      // Send a PUT request to the server to increment the like count
+      const response = await axios.put(
+        `http://localhost:3000/artifacts/${artifactDetails._id}/like`
       );
-
-      if (!response.ok) {
-        throw new Error("Failed to update likes");
-      }
-
-      const updatedArtifact = await response.json();
-      setLikes(updatedArtifact.likes);
+      console.log("like response=======>", response);
+      setLikes(response.data.likes); // If the request is successful, update the local like count
     } catch (error) {
       console.error("Error updating likes:", error);
     }
