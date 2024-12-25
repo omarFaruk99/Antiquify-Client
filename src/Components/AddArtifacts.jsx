@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const AddArtifacts = () => {
   const { user } = useContext(AuthContext); // Fetch logged-in user info
@@ -88,6 +89,9 @@ const AddArtifacts = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-base-300 shadow-md rounded-md my-5">
+      <Helmet>
+        <title>Add Artifact</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-6">Add Artifact</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

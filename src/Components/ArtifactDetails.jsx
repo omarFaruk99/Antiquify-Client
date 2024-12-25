@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import axios from "axios";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const ArtifactDetails = () => {
   // Fetching artifact details passed through the route loader
@@ -85,6 +86,9 @@ const ArtifactDetails = () => {
 
   return (
     <div className="min-h-screen bg-base-200 text-base-content p-6">
+      <Helmet>
+        <title>Artifact Details</title>
+      </Helmet>
       <div className="max-w-xl mx-auto shadow-lg rounded-lg bg-base-100 p-4">
         {/* Display artifact image */}
         <img

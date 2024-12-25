@@ -4,6 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async";
 
 const MyArtifacts = () => {
   const { user } = useContext(AuthContext);
@@ -71,6 +72,9 @@ const MyArtifacts = () => {
 
   return (
     <div className="p-4">
+      <Helmet>
+        <title>My Artifacts</title>
+      </Helmet>
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">
           My Artifacts{" "}

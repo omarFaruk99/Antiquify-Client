@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa6";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { loginUser, handleGoogleLogin } = useContext(AuthContext);
@@ -37,6 +38,9 @@ const Login = () => {
   };
   return (
     <div className="flex justify-center mt-28">
+      <Helmet>
+        <title>Login page</title>
+      </Helmet>
       <div className=" card bg-gray-500 w-full max-w-sm shrink-0 shadow-2xl">
         <form onSubmit={handleSubmit} className="card-body pb-2">
           <h2 className="text-center font-semibold text-lg">

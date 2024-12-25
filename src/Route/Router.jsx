@@ -10,6 +10,7 @@ import LikedArtifacts from "../Components/LikedArtifacts";
 import ArtifactDetails from "../Components/ArtifactDetails";
 import UpdateArtifact from "../Components/UpdateArtifact";
 import ErrorPage from "../Components/ErrorPage";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -26,25 +27,45 @@ const router = createBrowserRouter([
       },
       {
         path: "/addArtifacts",
-        element: <AddArtifacts></AddArtifacts>,
+        element: (
+          <PrivateRouter>
+            <AddArtifacts></AddArtifacts>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/myArtifacts",
-        element: <MyArtifacts></MyArtifacts>,
+        element: (
+          <PrivateRouter>
+            <MyArtifacts></MyArtifacts>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/likedArtifacts",
-        element: <LikedArtifacts></LikedArtifacts>,
+        element: (
+          <PrivateRouter>
+            <LikedArtifacts></LikedArtifacts>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/artifacts/details/:id",
-        element: <ArtifactDetails></ArtifactDetails>,
+        element: (
+          <PrivateRouter>
+            <ArtifactDetails></ArtifactDetails>
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/artifacts/details/${params.id}`),
       },
       {
         path: "/update/:id",
-        element: <UpdateArtifact></UpdateArtifact>,
+        element: (
+          <PrivateRouter>
+            <UpdateArtifact></UpdateArtifact>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/login",

@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UpdateArtifact = () => {
   const { id } = useParams(); // Get the artifact ID from the URL
@@ -47,6 +48,9 @@ const UpdateArtifact = () => {
 
   return (
     <div className="p-4 w-11/12 mx-auto">
+      <Helmet>
+        <title>Update Artifact</title>
+      </Helmet>
       <h1 className="text-2xl font-bold mb-4">Update Artifact</h1>
       <form onSubmit={handleUpdate} className="space-y-4">
         <div>

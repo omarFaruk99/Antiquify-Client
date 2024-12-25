@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import { HashLoader } from "react-spinners";
 import CountUp from "react-countup";
+import { Helmet } from "react-helmet-async";
 
 const LikedArtifacts = () => {
   const { user } = useContext(AuthContext);
@@ -11,7 +12,7 @@ const LikedArtifacts = () => {
 
   // Fetch liked artifacts when the user's email is available
   useEffect(() => {
-    if (!user?.email) return; //change this #################################################
+    // if (!user?.email) return; //change this #################################################
 
     axios
       .get("http://localhost:3000/artifacts/liked", {
@@ -38,6 +39,9 @@ const LikedArtifacts = () => {
 
   return (
     <div className="p-6">
+      <Helmet>
+        <title>Liked Artifacts</title>
+      </Helmet>
       {/* Heading with Dynamic Count */}
       <div className="flex items-center justify-center mb-6">
         <h1 className="text-2xl font-bold flex items-center">

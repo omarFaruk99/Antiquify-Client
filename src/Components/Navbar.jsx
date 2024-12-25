@@ -34,7 +34,7 @@ const Navbar = () => {
     <>
       <NavLink to={"/"}>Home</NavLink>
       <NavLink to={"/allArtifacts"}>All Artifacts</NavLink>
-      <NavLink to={"/addArtifacts"}>Add Artifacts(p)</NavLink>
+      <NavLink to={"/addArtifacts"}>Add Artifacts</NavLink>
     </>
   );
 
@@ -139,10 +139,10 @@ const Navbar = () => {
               <div className="absolute right-0 mt-2 bg-gray-700  text-yellow-400 rounded shadow-lg z-10">
                 <ul className="menu p-2">
                   <li>
-                    <NavLink to={"/myArtifacts"}>My_Artifacts(p)</NavLink>
+                    <NavLink to={"/myArtifacts"}>My_Artifacts</NavLink>
                   </li>
                   <li>
-                    <NavLink to={"/likedArtifacts"}>Liked_Artifacts(p)</NavLink>
+                    <NavLink to={"/likedArtifacts"}>Liked_Artifacts</NavLink>
                   </li>
                   <li>
                     <button

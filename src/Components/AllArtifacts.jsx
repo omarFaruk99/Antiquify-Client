@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AllArtifactCards from "./AllArtifactCards";
 import { Bars } from "react-loader-spinner";
+import { Helmet } from "react-helmet-async";
 
 const AllArtifacts = () => {
   const [artifacts, setArtifacts] = useState([]);
@@ -39,7 +40,7 @@ const AllArtifacts = () => {
 
   // handle clear search inpput
   const handleClearSearch = () => {
-    setArtifacts(""); // clear search Input
+    setSearchQuery(""); // clear search Input
     setfilteredArtifacts(artifacts); //Reset Filtered artifacts to show all
   };
 
@@ -61,6 +62,9 @@ const AllArtifacts = () => {
 
   return (
     <div className="w-11/12 mx-auto my-5">
+      <Helmet>
+        <title>All Artifacts</title>
+      </Helmet>
       {/* search functionality: by arfifacts==> name */}
       <div className="flex justify-center">
         <input

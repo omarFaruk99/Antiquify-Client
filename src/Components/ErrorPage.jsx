@@ -1,9 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { FaExclamationTriangle } from "react-icons/fa"; // Importing a warning icon
+import { Helmet } from "react-helmet-async";
 
 const NotFound = () => {
   return (
     <section className="h-screen flex items-center justify-center bg-[#F5EFE7]">
+      <Helmet>
+        <title>Error Page</title>
+      </Helmet>
       <div className="text-center">
         {/* Icon for Visual Appeal */}
         <div className="flex justify-center">
@@ -19,11 +23,13 @@ const NotFound = () => {
         </p>
 
         {/* Button to Navigate Back to Home */}
-        <NavLink
-          to="/"
-          className="inline-block px-6 py-3 bg-[#4F709C] text-white font-semibold rounded-lg hover:bg-[#213555] transition duration-300"
-        >
-          Go Back to Home
+        <NavLink to="/">
+          <button
+            type="button"
+            className="text-black bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+          >
+            Back to home
+          </button>
         </NavLink>
       </div>
     </section>
