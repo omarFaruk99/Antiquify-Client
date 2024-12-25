@@ -9,6 +9,7 @@ import MyArtifacts from "../Components/MyArtifacts";
 import LikedArtifacts from "../Components/LikedArtifacts";
 import ArtifactDetails from "../Components/ArtifactDetails";
 import UpdateArtifact from "../Components/UpdateArtifact";
+import ErrorPage from "../Components/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
 

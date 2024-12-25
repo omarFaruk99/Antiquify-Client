@@ -37,6 +37,12 @@ const AllArtifacts = () => {
     setfilteredArtifacts(results);
   };
 
+  // handle clear search inpput
+  const handleClearSearch = () => {
+    setArtifacts(""); // clear search Input
+    setfilteredArtifacts(artifacts); //Reset Filtered artifacts to show all
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -59,11 +65,18 @@ const AllArtifacts = () => {
       <div className="flex justify-center">
         <input
           type="text"
-          placeholder="serch by artifact name"
+          placeholder="Search by artifact name"
           className="input input-bordered mb-5"
           value={searchQuery}
           onChange={handleSearch}
         />
+        {/* clear button */}
+        <button
+          onClick={handleClearSearch}
+          className="btn bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 hover:opacity-90 text-black  ml-2"
+        >
+          clear
+        </button>
       </div>
 
       {filteredArtifacts.length > 0 ? (
