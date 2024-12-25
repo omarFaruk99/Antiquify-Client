@@ -62,9 +62,7 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-gray-700  text-yellow-400 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <div className="flex flex-col gap-2">
-              {navbarLink}
-            </div>
+            <div className="flex flex-col gap-2">{navbarLink}</div>
           </ul>
         </div>
         <a className="btn btn-ghost text-yellow-400 text-2xl font-bold">
@@ -105,13 +103,13 @@ const Navbar = () => {
           <div className="flex gap-2">
             <NavLink
               to={"/login"}
-              className="btn btn-primary text-sm py-1 px-2 sm:text-base sm:py-2 sm:px-5"
+              className="btn text-black bg-gradient-to-l from-gray-400 border-none via-orange-400 to-yellow-400 hover:opacity-90 text-sm py-1 px-2 sm:text-base sm:py-2 sm:px-5"
             >
               Login
             </NavLink>
             <NavLink
               to={"/register"}
-              className="btn bg-blue-800 text-white border-none text-sm py-1 px-2 sm:text-base sm:py-2 sm:px-5"
+              className="btn text-black  bg-gradient-to-r  from-yellow-400 via-orange-400 to-gray-400 hover:opacity-90 border-none text-sm py-1 px-2 sm:text-base sm:py-2 sm:px-5"
             >
               Register
             </NavLink>
