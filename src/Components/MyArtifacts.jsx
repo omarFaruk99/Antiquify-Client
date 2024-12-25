@@ -26,7 +26,7 @@ const MyArtifacts = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <HashLoader size={80} color="#ffae42"  />
+        <HashLoader size={80} color="#ffae42" />
       </div>
     );
   }
