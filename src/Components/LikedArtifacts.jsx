@@ -1,21 +1,37 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import axios from "axios";
 import { HashLoader } from "react-spinners";
 import CountUp from "react-countup";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../CustomHook/useAxiosSecure";
 
 const LikedArtifacts = () => {
   const { user } = useContext(AuthContext);
   const [likedArtifacts, setLikedArtifacts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
 
   // Fetch liked artifacts when the user's email is available
-  useEffect(() => {
-    // if (!user?.email) return; //change this #################################################
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:3000/artifacts/liked", {
+  //       params: { email: user.email },
+  //     })
+  //     .then((res) => {
+  //       setLikedArtifacts(res.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching liked artifacts:", error);
+  //       setLoading(false);
+  //     });
+  // }, [user?.email]);
 
-    axios
-      .get("http://localhost:3000/artifacts/liked", {
+  useEffect(() => {
+    if (!user?.email) return; // Prevent request if user email is missing
+
+    axiosSecure
+      .get(`/artifacts/liked`, {
         params: { email: user.email },
       })
       .then((res) => {
@@ -26,7 +42,7 @@ const LikedArtifacts = () => {
         console.error("Error fetching liked artifacts:", error);
         setLoading(false);
       });
-  }, [user?.email]);
+  }, [axiosSecure, user?.email]);
 
   if (loading) {
     return (
@@ -48,7 +64,7 @@ const LikedArtifacts = () => {
           My Liked Artifacts
         </h1>
         <span className="ml-2 bg-blue-100 text-blue-800 dark:bg-blue-700 dark:text-blue-200 text-sm font-medium px-3 py-1 rounded-full">
-          <CountUp end={likedArtifacts.length} duration={1.5} ></CountUp>
+          <CountUp end={likedArtifacts.length} duration={1.5}></CountUp>
         </span>
       </div>
 

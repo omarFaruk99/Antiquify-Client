@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import {
   FaHeart,
   FaRegHeart,
@@ -10,10 +10,12 @@ import {
 import axios from "axios";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
+// import useAxiosSecure from "../CustomHook/useAxiosSecure";
 
 const ArtifactDetails = () => {
   // Fetching artifact details passed through the route loader
   const artifactDetails = useLoaderData();
+  // const { id } = useParams();
 
   // Using context to access authenticated user
   const { user } = useContext(AuthContext);
@@ -26,6 +28,7 @@ const ArtifactDetails = () => {
 
   // State to manage loading status
   const [loading, setLoading] = useState(true);
+  // const axiosSecure = useAxiosSecure();
 
   // Fetch initial like status when the component mounts
   useEffect(() => {
@@ -54,6 +57,34 @@ const ArtifactDetails = () => {
 
     fetchLikeStatus();
   }, [artifactDetails._id, user]);
+
+  // Fetch initial like status when the component mounts
+  // useEffect(() => {
+  //   if (!user) {
+  //     setLoading(false); // Stop loading if user is not authenticated
+  //     return;
+  //   }
+
+  //   const fetchLikeStatus = async () => {
+  //     try {
+  //       // Using axiosSecure for making a secure GET request
+  //       const response = await axiosSecure.get(
+  //         `/artifacts/details/${artifactDetails._id}`,
+  //         { params: { email: user.email } } // Passing user's email as a parameter
+  //       );
+
+  //       // Setting the like count and like status
+  //       setLikes(response.data.likes);
+  //       setIsLiked(response.data.isLikedByUser);
+  //     } catch (error) {
+  //       console.error("Error fetching like status:", error);
+  //     } finally {
+  //       setLoading(false); // Stop loading after the fetch is complete
+  //     }
+  //   };
+
+  //   fetchLikeStatus();
+  // }, [user]);
 
   // Handle toggling like
   const handleToggleLike = async () => {

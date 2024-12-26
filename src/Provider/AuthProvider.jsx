@@ -10,6 +10,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
@@ -36,11 +37,42 @@ const AuthProvider = ({ children }) => {
   };
 
   //set auth state 'observer'
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //     setLoading(false);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      console.log("state captured", currentUser?.email);
+
+      if (currentUser?.email) {
+        const user = { email: currentUser.email };
+        // Send a POST request to the server to get a JWT for the user
+        axios
+          .post("http://localhost:3000/jwt", user, { withCredentials: true })
+          // The client allows `withCredentials: true` to send cookies with the request.
+          // The server must be configured to accept and verify cookies for authentication.
+          .then((res) => {
+            console.log("login token===> ", res.data);
+            setLoading(false);
+          });
+      } else {
+        axios
+          .post("http://localhost:3000/logout", {}, { withCredentials: true })
+          .then((res) => {
+            console.log("logout===> ", res.data);
+            setLoading(false);
+          });
+      }
     });
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   //update profile

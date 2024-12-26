@@ -5,24 +5,48 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../CustomHook/useAxiosSecure";
 
 const MyArtifacts = () => {
   const { user } = useContext(AuthContext);
   const [artifacts, setArtifacts] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure(); //import custom hook and save it in a variable.
+
+  // useEffect(() => {
+  //   axiosSecure
+  //     .get(`/myArtifacts?email=${user?.email}`)
+  //     .then((res) => {
+  //       setArtifacts(res.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching artifacts:", error);
+  //     });
+  // }, [user?.email]);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/myArtifacts?email=${user?.email}`)
+    if (!user?.email) return; // Prevent request if user email is missing
+
+    axiosSecure
+      .get(`/myArtifacts?email=${user?.email}`)
       .then((res) => {
-        setArtifacts(res.data);
-        setLoading(false);
+        setArtifacts(res.data); // Update artifacts state with data
+        setLoading(false); // Turn off loading state
       })
       .catch((error) => {
-        console.error("Error fetching artifacts:", error);
+        const status = error.response?.status; // Get error status code
+        if (status === 401) {
+          console.error("Unauthorized: Please log in again.");
+        } else if (status === 403) {
+          console.error("Forbidden: You don't have access to this resource.");
+        } else {
+          console.error("Error fetching artifacts:", error);
+        }
+        setLoading(false); // Turn off loading state in case of error
       });
-  }, [user?.email]);
+  }, [axiosSecure, user?.email]);
 
   if (loading) {
     return (
