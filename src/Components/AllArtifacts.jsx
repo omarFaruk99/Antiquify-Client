@@ -10,16 +10,16 @@ const AllArtifacts = () => {
   const [searchQuery, setSearchQuery] = useState(""); // Stores the search input
   const [loading, setLoading] = useState(true);
 
-  console.log("artifacts=============>", artifacts);
+  // console.log("artifacts=============>", artifacts);
 
   useEffect(() => {
     const fetchArtifacts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/artifacts");
+        const response = await axios.get("https://antiquify-server.vercel.app/artifacts");
         setArtifacts(response.data); //save full artifacts data
         setfilteredArtifacts(response.data); //initialize with all artifacts
       } catch (error) {
-        console.log("Error fetching artifacts:", error);
+        // console.log("Error fetching artifacts:", error);
       } finally {
         setLoading(false);
       }

@@ -27,7 +27,7 @@ Antiquify is a web application designed for tracking historical artifacts such a
 5. **react-helmet-async**: For managing the dynamic document head, like page titles.
 
 **Live Project Link**:  
-[Visit Antiquify Live](#)  
+[Visit Antiquify Live](https://antiquify-68162.web.app/)  
 
 ---
 

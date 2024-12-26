@@ -38,14 +38,14 @@ const AddArtifacts = () => {
     // console.log("user======>", user);
 
     // using axios
-    // axios.post("http://localhost:3000/artifacts", artifactData).then((res) => {
+    // axios.post("https://antiquify-server.vercel.app/artifacts", artifactData).then((res) => {
     //   console.log("clinet res=======>", res);
     //   console.log("clinet res.data=======>", res.data);
     // });
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/artifacts",
+        "https://antiquify-server.vercel.app/artifacts",
         artifactData
       );
 

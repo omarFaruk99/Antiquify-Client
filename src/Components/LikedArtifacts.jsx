@@ -14,7 +14,7 @@ const LikedArtifacts = () => {
   // Fetch liked artifacts when the user's email is available
   // useEffect(() => {
   //   axios
-  //     .get("http://localhost:3000/artifacts/liked", {
+  //     .get("https://antiquify-server.vercel.app/artifacts/liked", {
   //       params: { email: user.email },
   //     })
   //     .then((res) => {

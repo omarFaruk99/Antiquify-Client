@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth"; // Import custom hook for auth context
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000", // Replace with your actual API base URL
+  baseURL: "https://antiquify-server.vercel.app", // Replace with your actual API base URL
   withCredentials: true, // Include cookies for authentication
 });
 
@@ -48,7 +48,7 @@ export default useAxiosSecure;
 // import { useNavigate } from "react-router-dom";
 
 // const axiosInstance = axios.create({
-//   baseURL: "http://localhost:3000",
+//   baseURL: "https://antiquify-server.vercel.app",
 //   withCredentials: true,
 // });
 

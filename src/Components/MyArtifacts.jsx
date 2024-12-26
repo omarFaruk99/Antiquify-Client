@@ -61,7 +61,7 @@ const MyArtifacts = () => {
   };
 
   const handleDelete = (id) => {
-    console.log("Delete artifact with ID:", id);
+    // console.log("Delete artifact with ID:", id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -74,7 +74,7 @@ const MyArtifacts = () => {
       if (result.isConfirmed) {
         // proceed with deletion
         axios
-          .delete(`http://localhost:3000/artifacts/${id}`)
+          .delete(`https://antiquify-server.vercel.app/artifacts/${id}`)
           .then((res) => {
             if (res.status === 200) {
               Swal.fire({

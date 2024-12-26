@@ -13,9 +13,9 @@ const FeaturedArtifacts = () => {
   // Fetch artifacts data
   useEffect(() => {
     axios
-      .get("http://localhost:3000/artifacts/top")
+      .get("https://antiquify-server.vercel.app/artifacts/top")
       .then((res) => {
-        console.log("get artifacts data ======>", res.data);
+        // console.log("get artifacts data ======>", res.data);
         setArtifacts(res.data);
         setLoading(false);
       })

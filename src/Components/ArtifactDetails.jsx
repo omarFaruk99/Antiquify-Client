@@ -41,7 +41,7 @@ const ArtifactDetails = () => {
       try {
         // Making a GET request to fetch like status
         const response = await axios.get(
-          `http://localhost:3000/artifacts/details/${artifactDetails._id}`,
+          `https://antiquify-server.vercel.app/artifacts/details/${artifactDetails._id}`,
           { params: { email: user.email } } // Passing user's email as a parameter
         );
 
@@ -96,7 +96,7 @@ const ArtifactDetails = () => {
     try {
       const action = isLiked ? "dislike" : "like"; // Determine action based on like status
       const response = await axios.put(
-        `http://localhost:3000/artifacts/${artifactDetails._id}/like`,
+        `https://antiquify-server.vercel.app/artifacts/${artifactDetails._id}/like`,
         { action, email: user.email } // Including user's email in the request
       );
 

@@ -57,7 +57,7 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/artifacts/details/${params.id}`),
+          fetch(`https://antiquify-server.vercel.app/artifacts/details/${params.id}`),
       },
       {
         path: "/update/:id",

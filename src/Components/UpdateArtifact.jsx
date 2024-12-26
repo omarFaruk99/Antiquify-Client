@@ -12,20 +12,20 @@ const UpdateArtifact = () => {
   useEffect(() => {
     // Fetch artifact details using the ID
     axios
-      .get(`http://localhost:3000/artifacts/details/${id}`)
+      .get(`https://antiquify-server.vercel.app/artifacts/details/${id}`)
       .then((res) => {
         setArtifact(res.data);
       })
       .catch((error) => console.error("Error fetching artifact:", error));
   }, [id]);
 
-  console.log("update fetch data========>", artifact);
+  // console.log("update fetch data========>", artifact);
 
   const handleUpdate = (e) => {
     e.preventDefault();
     // Update artifact in the database
     axios
-      .put(`http://localhost:3000/artifacts/update/${id}`, artifact)
+      .put(`https://antiquify-server.vercel.app/artifacts/update/${id}`, artifact)
       .then((res) => {
         if (res.status === 200) {
           Swal.fire({

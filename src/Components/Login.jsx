@@ -21,7 +21,7 @@ const Login = () => {
     loginUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("user in Login=====>: ", user);
+        // console.log("user in Login=====>: ", user);
         e.target.reset();
         setSuccessMessage("Registration success");
         navigate(location?.state ? location.state : "/");
