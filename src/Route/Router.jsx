@@ -11,6 +11,9 @@ import ArtifactDetails from "../Components/ArtifactDetails";
 import UpdateArtifact from "../Components/UpdateArtifact";
 import ErrorPage from "../Components/ErrorPage";
 import PrivateRouter from "./PrivateRouter";
+import FAQ from "../Components/FAQ";
+import ContactUs from "../Components/ContactUs";
+import Testimonials from "../Components/Testimonials";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +60,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`https://antiquify-server.vercel.app/artifacts/details/${params.id}`),
+          fetch(
+            `https://antiquify-server.vercel.app/artifacts/details/${params.id}`
+          ),
       },
       {
         path: "/update/:id",
@@ -74,6 +79,18 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/faq",
+        element: <FAQ></FAQ>,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs></ContactUs>,
+      },
+      {
+        path: "/testimonials",
+        element: <Testimonials></Testimonials>,
       },
     ],
   },

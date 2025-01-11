@@ -55,11 +55,11 @@ const Register = () => {
   };
 
   return (
-    <div className=" flex justify-center mt-28">
+    <div className=" flex justify-center my-12">
       <Helmet>
         <title>Register Page</title>
       </Helmet>
-      <div className="card bg-[#f0f8ff] w-full max-w-sm shrink-0 shadow-2xl">
+      <div className="card bg-base w-full max-w-sm shrink-0 shadow-2xl border border-base-300">
         <form onSubmit={handleSubmit} className="card-body">
           <h2 className="text-center font-semibold text-lg">
             Register Your Account
@@ -113,13 +113,13 @@ const Register = () => {
             />
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Register</button>
+            <button className="btn bg-yellow-400 border-none text-black hover:bg-yellow-500">Register</button>
           </div>
         </form>
 
         {/* Login in with google */}
-        <div className="flex justify-center">
-          <button className="btn btn-accent" onClick={googleLogingHandler}>
+        <div className="flex justify-center -mt-3">
+          <button className="btn w-10/12 mx-auto bg-yellow-400 text-black hover:bg-yellow-500 " onClick={googleLogingHandler}>
             {" "}
             <span>
               <FaGoogle />
@@ -130,7 +130,7 @@ const Register = () => {
 
         <div className="flex justify-center pb-5">
           Already have an account?
-          <Link className="text-orange-600 ml-1" to="/login">
+          <Link className="text-yellow-400 ml-1" to="/login">
             Login
           </Link>
         </div>
