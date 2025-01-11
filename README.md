@@ -13,7 +13,7 @@ Antiquify is a web application designed for tracking historical artifacts such a
 - Extra functionality including search, spinners for loading states, and a custom 404 page.
 
 **Technologies Used**:
-- Frontend: React, React Router, DaisyUI, Flowbite
+- Frontend: React, React Router, DaisyUI, Flowbite, Mamba UI
 - Backend: Node.js, Express
 - Authentication: Firebase, JWT
 - Database: MongoDB
