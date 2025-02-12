@@ -51,6 +51,7 @@ const ContactUs = () => {
               type="email"
               id="email"
               name="email"
+              placeholder="omar@gmail.com"
               value={formData.email}
               onChange={handleChange}
               required
