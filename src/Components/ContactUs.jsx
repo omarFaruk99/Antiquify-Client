@@ -34,6 +34,7 @@ const ContactUs = () => {
             </label>
             <input
               type="text"
+              placeholder="Omar Faruk"
               id="name"
               name="name"
               value={formData.name}
