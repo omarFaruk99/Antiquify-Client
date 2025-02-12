@@ -76,7 +76,7 @@ const ContactUs = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="w-full py-2 mt-4 bg-yellow-400 rounded-md border-none text-black hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full py-2 mt-4 bg-yellow-400 rounded-md font-semibold border-none text-black hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               Send Message
             </button>
