@@ -112,7 +112,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               to={"/register"}
-              className="btn text-black  bg-gradient-to-r  from-yellow-400 via-orange-400 to-gray-400 hover:opacity-90 border-none text-sm py-1 px-2 sm:text-base sm:py-2 sm:px-5"
+              className="btn text-black  bg-yellow-500 hover:bg-yellow-600 border-none text-sm py-1 px-2 sm:text-base sm:py-2 sm:px-5"
             >
               Register
             </NavLink>
