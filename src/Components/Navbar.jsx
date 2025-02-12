@@ -106,7 +106,7 @@ const Navbar = () => {
           <div className="flex gap-2">
             <NavLink
               to={"/login"}
-              className="btn text-black bg-gradient-to-l from-gray-400 border-none via-orange-400 to-yellow-400 hover:opacity-90 text-sm py-1 px-2 sm:text-base sm:py-2 sm:px-5"
+              className="btn text-black bg-yellow-500 hover:bg-yellow-600 text-sm py-1 px-2 sm:text-base sm:py-2 sm:px-5"
             >
               Login
             </NavLink>
