@@ -121,7 +121,7 @@ npm run dev
 ### Backend Setup
 ```bash
 # Clone repository
-git clone https://github.com/your-username/antiquify-server.git
+git clone https://github.com/omarFaruk99/Antiquify-Server
 
 # Install dependencies
 cd antiquify-server
